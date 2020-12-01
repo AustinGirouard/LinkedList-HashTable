@@ -16,8 +16,8 @@ public class HashTableTest
     }
 
     /*
-     * HashTableTest constructor
-     * Reads in all data from datafile.txt and inserts into HashTableBuilder
+     * HashTableTest constructor.
+     * Reads in all data from datafile.txt and inserts into HashTableBuilder.
      */
     HashTableTest(String filename)
     {
@@ -28,9 +28,10 @@ public class HashTableTest
             ArrayList<String> tempArray = new ArrayList<String>();
             FileData fd;
 
-            // While the datafile 
+            // While the datafile is not empty of records...
             while ((fd = this.readNextRecord()) != null) 
             {
+                // Add keywords to tempArray to prevent duplicates
                 for (int i = 0; i < fd.keywords.length; i++)
                 {
                     if (!tempArray.contains(fd.keywords[i]))
@@ -40,15 +41,19 @@ public class HashTableTest
                     }
                 }
             }
-            table = new HashTableBuilder(tableSize);
-            //System.out.printf("Number of Keywords: %d\n", tableSize);
 
+            // Create a HashTable
+            // Size = prime following tableSize * 2
+            table = new HashTableBuilder(tableSize);
+
+            // Set reader to the beginning of the file again to insert Elements into HashTable
             reader = new BufferedReader(new FileReader(filename));
             /* READS DATAFILE.TXT INTO DATASTRUCTURE  */
             while ((fd = readNextRecord()) != null)
             {
                 for (int i = 0; i < fd.keywords.length; i++)
                 {
+                    // Insert each element
                     table.insert(fd.keywords[i], fd);
                 }
             }
@@ -73,6 +78,10 @@ public class HashTableTest
         }
     }
 
+    /*
+     * This function reads the next record in the datafile.
+     * Stores in fd.
+     */
     public FileData readNextRecord()
     {
         if(reader == null)
@@ -84,11 +93,12 @@ public class HashTableTest
         else
         {
             FileData readData;
-            
+
             try
             {
                 String data = reader.readLine();
                 if(data == null) return null;
+                
                 //             FileData(      int id,            String title,      String author,     int keywordCount)
                 readData = new FileData(Integer.parseInt(data), reader.readLine(), reader.readLine(), Integer.parseInt(reader.readLine()));
                 
