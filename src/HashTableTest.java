@@ -13,6 +13,10 @@ public class HashTableTest
     {
         HashTableTest test = new HashTableTest("datafile.txt");
         test.table.print();
+
+        // Test delete function for "medical" keyword
+        test.table.delete("medical");
+        test.table.print();
     }
 
     /*
@@ -98,7 +102,7 @@ public class HashTableTest
             {
                 String data = reader.readLine();
                 if(data == null) return null;
-                
+
                 //             FileData(      int id,            String title,      String author,     int keywordCount)
                 readData = new FileData(Integer.parseInt(data), reader.readLine(), reader.readLine(), Integer.parseInt(reader.readLine()));
                 

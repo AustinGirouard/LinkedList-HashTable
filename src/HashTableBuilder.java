@@ -78,6 +78,29 @@ class HashTableBuilder
 
 
     /*
+     * This function deletes a keyword from the HashTable.
+     * The index of the keyword being removed is returned.
+     * If the keyword is not found, return -1.
+     */
+    public int delete(String keyword)
+    {
+        // Locate index of keyword to be deleted
+        int index = find(keyword);
+
+        // If the keyword is found, remove from HashTable
+        if(index != -1)
+        {
+            hashTable[index].head = null;
+            hashTable[index] = null;
+        }
+
+        // Return index of keyword deleted.
+        // If keyword not found, returns -1.
+        return index;
+    }
+
+
+    /*
      * This function returns the index of the keyword in the HashTable.
      * If the keyword is not found, returns -1.
      */
