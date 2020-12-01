@@ -1,4 +1,7 @@
-class Element { // self referential architecture
+package src;
+
+// self referential architecture
+class Element { 
   String keyword;
   Record head;
 

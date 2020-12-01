@@ -3,28 +3,30 @@ package src;
 import java.util.*;
 import java.io.*;
 
-public class HashTableTest {
+public class HashTableTest
+{
   BufferedReader reader;
   HashTableBuilder table;
   int tableSize;
+public static void main(String[] args){HashTableTest test = new HashTableTest("datafile.txt");test.table.print();}
 
-  public static void main(String[] args){
-    HashTableTest test = new HashTableTest("datafile.txt");
-    test.table.print();
-  }
-
-  HashTableTest(String filename){
-    try {
+  HashTableTest(String filename)
+  {
+    try
+    {
       reader = new BufferedReader(new FileReader(filename)); // need to look at BufferedReader
       ArrayList<String> tempArray = new ArrayList<String>();
       FileData fd;
-      while ((fd = this.readNextRecord()) != null) {
-        for (int i=0; i<fd.keywords.length; i++) {
-          if (!tempArray.contains(fd.keywords[i])) {
+
+      while ((fd = this.readNextRecord()) != null) 
+      {
+        for (int i=0; i<fd.keywords.length; i++)
+        {
+          if (!tempArray.contains(fd.keywords[i]))
+          {
             tempArray.add(fd.keywords[i]);
             tableSize++;
           }
-
         }
       }
       table = new HashTableBuilder(tableSize);

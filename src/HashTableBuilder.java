@@ -1,3 +1,5 @@
+package src;
+
 class HashTableBuilder {
   Element [] hashTable;
   int tableSize;
@@ -74,7 +76,7 @@ class HashTableBuilder {
    }
 
    public void print() {
-     int count = 0;
+     //int count = 0;
      int printWrap = 0;
      System.out.print("\n\n\n");
      for (int index=0; index<tableSize; index++) {
