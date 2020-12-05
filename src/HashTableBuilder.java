@@ -91,7 +91,7 @@ class HashTableBuilder
         if(index != -1)
         {
             hashTable[index].head = null;
-            hashTable[index] = null;
+            hashTable[index] = new Element("", null);
         }
 
         // Return index of keyword deleted.
@@ -192,7 +192,7 @@ class HashTableBuilder
         
         for (int index = 0; index < tableSize; index++)
         {
-            if (hashTable[index] != null)
+            if (hashTable[index] != null && hashTable[index].keyword != "")
             {
                 // Print index, keyword, and integer representation of keyword
                 System.out.printf("index [%d]: %s (E ---> int): %d\n", index, hashTable[index].keyword, convertStringToInt(hashTable[index].keyword));
