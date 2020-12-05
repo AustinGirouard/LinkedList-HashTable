@@ -17,6 +17,11 @@ public class HashTableTest
         // Test delete function for "medical" keyword
         test.table.delete("medical");
         test.table.print();
+        
+        // Test delete function for "medical" keyword
+        test.table.delete("image-retrieval");
+        test.table.delete("image-management");
+        test.table.print();
     }
 
     /*
